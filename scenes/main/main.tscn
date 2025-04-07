@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=4 uid="uid://cp3hfer2ls105"]
+[gd_scene load_steps=4 format=4 uid="uid://cp3hfer2ls105"]
 
 [ext_resource type="PackedScene" uid="uid://by4t0apkl530c" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="TileSet" uid="uid://4e7dd5ttmuu7" path="res://resources/tileset.tres" id="1_iuonh"]
+[ext_resource type="PackedScene" uid="uid://6sex2c1qewxl" path="res://scenes/game_camera/game_camera.tscn" id="1_k2fmo"]
 
 [node name="Main" type="Node2D"]
+
+[node name="GameCamera" parent="." instance=ExtResource("1_k2fmo")]
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
 
 [node name="Map" type="Node2D" parent="."]
 
