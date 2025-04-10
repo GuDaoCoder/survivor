@@ -1,3 +1,4 @@
+using System.Linq;
 using Godot;
 
 namespace survivor.scenes.ability.sword_ability_controller;
@@ -5,6 +6,8 @@ namespace survivor.scenes.ability.sword_ability_controller;
 public partial class SwordAbilityController : Node
 {
     [Export] public PackedScene SwordAbility;
+
+    [Export] public float MaxRange = 100f;
 
 
     public override void _Ready()
@@ -21,8 +24,16 @@ public partial class SwordAbilityController : Node
             return;
         }
 
+        BasicEnemy enemy = GetTree().GetNodesInGroup("enemy").ToList().OfType<BasicEnemy>()
+            .Where(enemy => player.GlobalPosition.DistanceTo(enemy.GlobalPosition) <= MaxRange)
+            .OrderBy(enemy => player.GlobalPosition.DistanceSquaredTo(enemy.GlobalPosition)).FirstOrDefault();
+        if (enemy == null)
+        {
+            return;
+        }
+
         Node2D swordAbilityInstance = SwordAbility.Instantiate<Node2D>();
-        swordAbilityInstance.GlobalPosition = player.GlobalPosition;
+        swordAbilityInstance.GlobalPosition = enemy.GlobalPosition;
         player.GetParent().AddChild(swordAbilityInstance);
     }
 }
