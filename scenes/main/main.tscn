@@ -24,3 +24,19 @@ collision_layer = 0
 [node name="BasicEnemy" parent="." instance=ExtResource("4_l3cfh")]
 position = Vector2(464, 259)
 collision_layer = 0
+
+[node name="BasicEnemy2" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(568, 61)
+collision_layer = 0
+
+[node name="BasicEnemy3" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(577, 140)
+collision_layer = 0
+
+[node name="BasicEnemy4" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(567, 280)
+collision_layer = 0
+
+[node name="BasicEnemy5" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(549, 466)
+collision_layer = 0

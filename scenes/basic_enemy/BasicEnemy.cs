@@ -3,7 +3,15 @@ using System;
 
 public partial class BasicEnemy : CharacterBody2D
 {
+    [Export] public Area2D DamageArea;
+
     private const float MaxSpeed = 70f;
+
+    public override void _Ready()
+    {
+        DamageArea.AreaEntered += OnDamageAreaEntered;
+    }
+
 
     public override void _Process(double delta)
     {
@@ -18,6 +26,12 @@ public partial class BasicEnemy : CharacterBody2D
         {
             return (player.GlobalPosition - GlobalPosition).Normalized();
         }
+
         return Vector2.Zero;
+    }
+
+    private void OnDamageAreaEntered(Area2D area)
+    {
+        QueueFree();
     }
 }

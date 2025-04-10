@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Godot;
 
@@ -34,6 +35,8 @@ public partial class SwordAbilityController : Node
 
         Node2D swordAbilityInstance = SwordAbility.Instantiate<Node2D>();
         swordAbilityInstance.GlobalPosition = enemy.GlobalPosition;
+        swordAbilityInstance.GlobalPosition += Vector2.Right.Rotated((float)GD.RandRange(0, float.Tau)) * 4;
+        swordAbilityInstance.Rotation = (enemy.GlobalPosition - swordAbilityInstance.GlobalPosition).Angle();
         player.GetParent().AddChild(swordAbilityInstance);
     }
 }
