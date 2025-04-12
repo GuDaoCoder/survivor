@@ -3,9 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://by4t0apkl530c" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="TileSet" uid="uid://4e7dd5ttmuu7" path="res://resources/tileset.tres" id="1_iuonh"]
 [ext_resource type="PackedScene" uid="uid://6sex2c1qewxl" path="res://scenes/game_camera/game_camera.tscn" id="1_k2fmo"]
-[ext_resource type="PackedScene" uid="uid://wjfcskct8vgj" path="res://scenes/basic_enemy/basic_enemy.tscn" id="4_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://c3ea5aa72ivvn" path="res://scenes/manager/enemy_manager.tscn" id="1_l3cfh"]
 
 [node name="Main" type="Node2D"]
+
+[node name="EnemyManager" parent="." instance=ExtResource("1_l3cfh")]
 
 [node name="GameCamera" parent="." instance=ExtResource("1_k2fmo")]
 position_smoothing_enabled = true
@@ -19,24 +21,4 @@ tile_set = ExtResource("1_iuonh")
 
 [node name="Player" parent="." instance=ExtResource("1_hyk8p")]
 position = Vector2(193, 159)
-collision_layer = 0
-
-[node name="BasicEnemy" parent="." instance=ExtResource("4_l3cfh")]
-position = Vector2(464, 259)
-collision_layer = 0
-
-[node name="BasicEnemy2" parent="." instance=ExtResource("4_l3cfh")]
-position = Vector2(568, 61)
-collision_layer = 0
-
-[node name="BasicEnemy3" parent="." instance=ExtResource("4_l3cfh")]
-position = Vector2(577, 140)
-collision_layer = 0
-
-[node name="BasicEnemy4" parent="." instance=ExtResource("4_l3cfh")]
-position = Vector2(567, 280)
-collision_layer = 0
-
-[node name="BasicEnemy5" parent="." instance=ExtResource("4_l3cfh")]
-position = Vector2(549, 466)
 collision_layer = 0
