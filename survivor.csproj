@@ -6,5 +6,6 @@
   <ItemGroup>
     <Content Include="scenes\ability\sword_ability\sword.png" />
     <Content Include="scenes\basic_enemy\basic_enemy.png" />
+    <Content Include="scenes\game_object\experience_vial\experience_vial.png" />
   </ItemGroup>
 </Project>
