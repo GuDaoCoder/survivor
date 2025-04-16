@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://cp3hfer2ls105"]
+[gd_scene load_steps=9 format=4 uid="uid://cp3hfer2ls105"]
 
 [ext_resource type="PackedScene" uid="uid://cemf762cfu7au" path="res://scenes/ui/arena_time_ui.tscn" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://by4t0apkl530c" path="res://scenes/game_object/player/player.tscn" id="1_hyk8p"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://6sex2c1qewxl" path="res://scenes/game_object/game_camera/game_camera.tscn" id="1_k2fmo"]
 [ext_resource type="PackedScene" uid="uid://c3ea5aa72ivvn" path="res://scenes/manager/enemy_manager.tscn" id="1_l3cfh"]
 [ext_resource type="PackedScene" uid="uid://bfx7agk8qdrq3" path="res://scenes/manager/arena_time_manager.tscn" id="2_ow5a4"]
+[ext_resource type="PackedScene" uid="uid://ca0gk0g3orbsr" path="res://scenes/manager/experience_mangger.tscn" id="4_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://rlva30ccwhgr" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="7_hujxm"]
 
 [node name="Main" type="Node2D"]
@@ -16,6 +17,8 @@ ArenaTimeManager = NodePath("../ArenaTimeManager")
 [node name="ArenaTimeManager" parent="." instance=ExtResource("2_ow5a4")]
 
 [node name="EnemyManager" parent="." instance=ExtResource("1_l3cfh")]
+
+[node name="ExperienceManager" parent="." instance=ExtResource("4_yyfjg")]
 
 [node name="GameCamera" parent="." instance=ExtResource("1_k2fmo")]
 position_smoothing_enabled = true
