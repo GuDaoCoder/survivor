@@ -5,6 +5,8 @@ public partial class BasicEnemy : CharacterBody2D
 {
     [Export] public Area2D DamageArea;
 
+    [Export] public survivor.scenes.component.HealthComponent HealthComponent;
+
     private const float MaxSpeed = 70f;
 
     public override void _Ready()
@@ -32,6 +34,6 @@ public partial class BasicEnemy : CharacterBody2D
 
     private void OnDamageAreaEntered(Area2D area)
     {
-        QueueFree();
+        HealthComponent.Damage(10f);
     }
 }

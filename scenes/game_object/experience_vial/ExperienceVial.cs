@@ -15,6 +15,6 @@ public partial class ExperienceVial : Node2D
     private void OnAreaEntered(Node2D node2D)
     {
         GameEvents.Instance.EmitExperienceVialCollected(2f);
-        QueueFree();
+        // QueueFree();
     }
 }

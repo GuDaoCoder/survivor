@@ -20,6 +20,6 @@ public partial class ExperienceManager : Node
     public void IncrementExperience(float experience)
     {
         _currentExperience += experience;
-        GD.Print(_currentExperience);
+        GD.Print($"当前经验：{_currentExperience}");
     }
 }

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dywyb5n73rhga"]
+
+[ext_resource type="Script" uid="uid://c6dnrrsk63p86" path="res://scenes/component/VailDropComponent.cs" id="1_4787y"]
+
+[node name="VailDropComponent" type="Node"]
+script = ExtResource("1_4787y")
