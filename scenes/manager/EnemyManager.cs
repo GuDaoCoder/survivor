@@ -31,7 +31,7 @@ public partial class EnemyManager : Node
         Vector2 randomDirection = Vector2.Right.Rotated((float)GD.RandRange(0,Double.Tau));
         Vector2 spawnPosition= player.GlobalPosition - randomDirection * MaxRange;
 
-        BasicEnemy basicEnemy = BasicEnemyPackedScene.Instantiate<BasicEnemy>();
+        game_object.basic_enemy.BasicEnemy basicEnemy = BasicEnemyPackedScene.Instantiate<game_object.basic_enemy.BasicEnemy>();
         GetParent().AddChild(basicEnemy);
         basicEnemy.GlobalPosition = spawnPosition;
 

@@ -1,19 +1,17 @@
 using Godot;
-using System;
+using survivor.scenes.component;
+
+namespace survivor.scenes.game_object.basic_enemy;
 
 public partial class BasicEnemy : CharacterBody2D
 {
-    [Export] public Area2D DamageArea;
-
-    [Export] public survivor.scenes.component.HealthComponent HealthComponent;
+    [Export] public HealthComponent HealthComponent;
 
     private const float MaxSpeed = 70f;
 
     public override void _Ready()
     {
-        DamageArea.AreaEntered += OnDamageAreaEntered;
     }
-
 
     public override void _Process(double delta)
     {
@@ -30,10 +28,5 @@ public partial class BasicEnemy : CharacterBody2D
         }
 
         return Vector2.Zero;
-    }
-
-    private void OnDamageAreaEntered(Area2D area)
-    {
-        HealthComponent.Damage(10f);
     }
 }

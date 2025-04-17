@@ -1,22 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://wjfcskct8vgj"]
+[gd_scene load_steps=9 format=3 uid="uid://wjfcskct8vgj"]
 
 [ext_resource type="Texture2D" uid="uid://dxbvto3kp6f6i" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_fng3e"]
 [ext_resource type="Script" uid="uid://twbvxh6ublnw" path="res://scenes/game_object/basic_enemy/BasicEnemy.cs" id="1_gxg7h"]
 [ext_resource type="PackedScene" uid="uid://dvs4gy8c1kg24" path="res://scenes/component/health_component.tscn" id="2_isd1k"]
 [ext_resource type="PackedScene" uid="uid://dywyb5n73rhga" path="res://scenes/component/vail_drop_component.tscn" id="3_elloc"]
 [ext_resource type="PackedScene" uid="uid://rlva30ccwhgr" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="4_bq7hi"]
+[ext_resource type="PackedScene" uid="uid://dhiliomvuvcc5" path="res://scenes/component/hurtbox_component.tscn" id="5_bq7hi"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gxg7h"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bq7hi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fng3e"]
 radius = 5.09902
 
-[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("DamageArea", "HealthComponent") groups=["enemy"]]
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("HealthComponent") groups=["enemy"]]
 collision_layer = 8
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_gxg7h")
-DamageArea = NodePath("DamageArea")
 HealthComponent = NodePath("HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_isd1k")]
@@ -25,13 +25,12 @@ HealthComponent = NodePath("HealthComponent")
 HealthComponent = NodePath("../HealthComponent")
 ExperienceVailScene = ExtResource("4_bq7hi")
 
-[node name="DamageArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("5_bq7hi")]
+HealthComponent = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_gxg7h")
+shape = SubResource("CircleShape2D_bq7hi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
