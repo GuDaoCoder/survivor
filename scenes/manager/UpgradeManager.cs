@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using survivor.common.model;
+using survivor.scenes.auto_load;
 using survivor.scenes.manager;
 
 public partial class UpgradeManager : Node
@@ -50,30 +52,7 @@ public partial class UpgradeManager : Node
             value.Quantity++;
         }
 
-        foreach (var kvp in _upgrades)
-        {
-            GD.Print(kvp.Value.ToString());
-        }
-    }
-
-    public class AbilityUpgradeModel
-    {
-        public AbilityUpgradeModel(AbilityUpgrade abilityUpgrade, int quantity)
-        {
-            _abilityUpgrade = abilityUpgrade;
-            Quantity = quantity;
-        }
-
-
-        public AbilityUpgrade _abilityUpgrade { set; get; }
-
-        public int Quantity { set; get; }
-
-        public override string ToString()
-        {
-            return $"{_abilityUpgrade.Name}：{Quantity}";
-        }
-
+        GameEvents.Instance.EmitAbilityUpgradeAdd(abilityUpgrade, _upgrades);
     }
 
 }
