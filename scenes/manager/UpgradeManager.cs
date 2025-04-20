@@ -29,8 +29,15 @@ public partial class UpgradeManager : Node
             UpgradeScene upgradeScene = GD.Load<PackedScene>("res://scenes/ui/upgrade_scene.tscn").Instantiate<UpgradeScene>();
             AddChild(upgradeScene);
             upgradeScene.SetUpgrades(new List<AbilityUpgrade> { abilityUpgrade });
+            upgradeScene.CardSelectedUpgrade += OnCardSelectedAbilityUpgrade;
         }
     }
+
+    private void OnCardSelectedAbilityUpgrade(AbilityUpgrade abilityUpgrade)
+    {
+        ApplyUpgrade(abilityUpgrade);
+    }
+
 
     private void ApplyUpgrade(AbilityUpgrade abilityUpgrade)
     {

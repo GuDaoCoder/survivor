@@ -10,7 +10,7 @@ public partial class SwordAbilityController : Node
 
     [Export] public float MaxRange = 100f;
 
-    [Export] public float Damage = 2f;
+    [Export] public float Damage = 10f;
 
 
     public override void _Ready()
