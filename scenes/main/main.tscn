@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cp3hfer2ls105"]
+[gd_scene load_steps=12 format=4 uid="uid://cp3hfer2ls105"]
 
 [ext_resource type="PackedScene" uid="uid://cemf762cfu7au" path="res://scenes/ui/arena_time_ui.tscn" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://by4t0apkl530c" path="res://scenes/game_object/player/player.tscn" id="1_hyk8p"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bfx7agk8qdrq3" path="res://scenes/manager/arena_time_manager.tscn" id="2_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://drj0yd0aa7guu" path="res://scenes/ui/experience_bar.tscn" id="2_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://ca0gk0g3orbsr" path="res://scenes/manager/experience_mangger.tscn" id="4_yyfjg"]
+[ext_resource type="PackedScene" uid="uid://dblfr6cjwmx1y" path="res://scenes/manager/upgrade_manager.tscn" id="6_b1x3f"]
+[ext_resource type="Script" uid="uid://bbyg2ev3bn645" path="res://scenes/manager/UpgradeManager.cs" id="7_a8run"]
+[ext_resource type="Resource" uid="uid://m74wcobvlcxe" path="res://resources/upgrades/sword_rate.tres" id="8_ouso4"]
 
 [node name="Main" type="Node2D"]
 
@@ -22,6 +25,11 @@ ExperienceManager = NodePath("../ExperienceManager")
 [node name="EnemyManager" parent="." instance=ExtResource("1_l3cfh")]
 
 [node name="ExperienceManager" parent="." instance=ExtResource("4_yyfjg")]
+
+[node name="UpgradeManager" parent="." node_paths=PackedStringArray("ExperienceManager") instance=ExtResource("6_b1x3f")]
+script = ExtResource("7_a8run")
+UpgradePool = Array[Resource]([ExtResource("8_ouso4")])
+ExperienceManager = NodePath("../ExperienceManager")
 
 [node name="GameCamera" parent="." instance=ExtResource("1_k2fmo")]
 position_smoothing_enabled = true

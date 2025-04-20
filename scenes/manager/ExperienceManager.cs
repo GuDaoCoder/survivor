@@ -9,6 +9,9 @@ public partial class ExperienceManager : Node
     public delegate void ExperienceUpdateEventHandler(int currentLevel, float totalExperience,
         float currentLevelProgress);
 
+    [Signal]
+    public delegate void LevelUpEventHandler(int newLevel);
+
     public int CurrentLevel { get; private set; } = 1;
 
     public float TotalExperience { get; private set; } = 0f;
@@ -39,6 +42,8 @@ public partial class ExperienceManager : Node
         if (TotalExperience >= GetTotalExpForLevel(CurrentLevel + 1))
         {
             CurrentLevel++;
+            EmitSignal(nameof(LevelUp), CurrentLevel);
+            GD.Print($"升级了！当前等级：{CurrentLevel}");
         }
     }
 
@@ -47,7 +52,7 @@ public partial class ExperienceManager : Node
         float currentLevelStart = GetTotalExpForLevel(CurrentLevel);
         float nextLevelExp = GetExpForNextLevel(CurrentLevel);
         float expIntoLevel = TotalExperience - currentLevelStart;
-        return  Mathf.Clamp(expIntoLevel / nextLevelExp,0,1);
+        return Mathf.Clamp(expIntoLevel / nextLevelExp, 0, 1);
     }
 
     public static float GetTotalExpForLevel(int targetLevel)

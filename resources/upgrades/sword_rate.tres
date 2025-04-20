@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://m74wcobvlcxe"]
+
+[ext_resource type="Script" uid="uid://gento880pdkl" path="res://resources/upgrades/AbilityUpgrade.cs" id="1_pyxp1"]
+
+[resource]
+script = ExtResource("1_pyxp1")
+Id = "sword_rate"
+Name = "Sword Quickness"
+Description = "每级增加10%的攻击速度"
