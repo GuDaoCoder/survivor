@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using survivor.common.model;
+using survivor.scenes.ability.sword_ability;
 using survivor.scenes.auto_load;
+using survivor.scenes.game_object.basic_enemy;
 
 namespace survivor.scenes.ability.sword_ability_controller;
 
@@ -49,7 +51,7 @@ public partial class SwordAbilityController : Node
             return;
         }
 
-        game_object.basic_enemy.BasicEnemy enemy = GetTree().GetNodesInGroup("enemy").ToList().OfType<game_object.basic_enemy.BasicEnemy>()
+        BasicEnemy enemy = GetTree().GetNodesInGroup("enemy").ToList().OfType<BasicEnemy>()
             .Where(enemy => player.GlobalPosition.DistanceTo(enemy.GlobalPosition) <= MaxRange)
             .OrderBy(enemy => player.GlobalPosition.DistanceSquaredTo(enemy.GlobalPosition)).FirstOrDefault();
         if (enemy == null)
@@ -57,11 +59,11 @@ public partial class SwordAbilityController : Node
             return;
         }
 
-        sword_ability.SwordAbility swordAbilityInstance = SwordAbility.Instantiate<sword_ability.SwordAbility>();
+        SwordAbility swordAbilityInstance = SwordAbility.Instantiate<SwordAbility>();
         swordAbilityInstance.GlobalPosition = enemy.GlobalPosition;
         swordAbilityInstance.GlobalPosition += Vector2.Right.Rotated((float)GD.RandRange(0, float.Tau)) * 4;
         swordAbilityInstance.Rotation = (enemy.GlobalPosition - swordAbilityInstance.GlobalPosition).Angle();
         swordAbilityInstance.HitboxComponent.Damage = Damage;
-        player.GetParent().AddChild(swordAbilityInstance);
+        GetTree().GetFirstNodeInGroup("foreground_layer").AddChild(swordAbilityInstance);
     }
 }

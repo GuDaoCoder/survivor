@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using survivor.scenes.game_object.basic_enemy;
 
 namespace survivor.scenes.manager;
 
@@ -31,8 +32,8 @@ public partial class EnemyManager : Node
         Vector2 randomDirection = Vector2.Right.Rotated((float)GD.RandRange(0,Double.Tau));
         Vector2 spawnPosition= player.GlobalPosition - randomDirection * MaxRange;
 
-        game_object.basic_enemy.BasicEnemy basicEnemy = BasicEnemyPackedScene.Instantiate<game_object.basic_enemy.BasicEnemy>();
-        GetParent().AddChild(basicEnemy);
+        BasicEnemy basicEnemy = BasicEnemyPackedScene.Instantiate<BasicEnemy>();
+        GetTree().GetFirstNodeInGroup("entities_layer").AddChild(basicEnemy);
         basicEnemy.GlobalPosition = spawnPosition;
 
     }

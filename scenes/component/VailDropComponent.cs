@@ -26,7 +26,7 @@ public partial class VailDropComponent : Node
         {
             ExperienceVial experienceVial = ExperienceVailScene.Instantiate<ExperienceVial>();
             experienceVial.GlobalPosition = node.GlobalPosition;
-            Owner.GetParent().AddChild(experienceVial);
+            GetTree().GetFirstNodeInGroup("entities_layer").AddChild(experienceVial);
         }
     }
 }
