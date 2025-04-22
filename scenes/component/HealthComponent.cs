@@ -10,23 +10,22 @@ public partial class HealthComponent : Node
     [Signal]
     public delegate void DieEventHandler();
 
-    private float _currentHealth;
+    public float CurrentHealth;
 
     public override void _Ready()
     {
-        _currentHealth = MaxHealth;
+        CurrentHealth = MaxHealth;
     }
 
     public void Damage(float damageAmount)
     {
-        _currentHealth = Math.Max(_currentHealth - damageAmount, 0);
-        GD.Print($"当前血量：{_currentHealth}");
+        CurrentHealth = Math.Max(CurrentHealth - damageAmount, 0);
         CallDeferred(nameof(CheckHealth));
     }
 
     private void CheckHealth()
     {
-        if (_currentHealth == 0)
+        if (CurrentHealth == 0)
         {
             EmitSignal(nameof(Die));
             Owner.QueueFree();

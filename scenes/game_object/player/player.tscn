@@ -1,11 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://by4t0apkl530c"]
+[gd_scene load_steps=8 format=3 uid="uid://by4t0apkl530c"]
 
 [ext_resource type="Texture2D" uid="uid://bg6jycscjio1g" path="res://scenes/game_object/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://b3ec47b21fjhm" path="res://scenes/game_object/player/Player.cs" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://bh6f7ielon3q6" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_gmlin"]
+[ext_resource type="PackedScene" uid="uid://dvs4gy8c1kg24" path="res://scenes/component/health_component.tscn" id="3_ss5pk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
 radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3670"]
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
 radius = 5.09902
@@ -20,15 +24,29 @@ script = ExtResource("1_dovo2")
 
 [node name="SwordAbilityController" parent="AbilityManager" instance=ExtResource("2_gmlin")]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HealthComponent" parent="." instance=ExtResource("3_ss5pk")]
+
+[node name="DamageIntervalTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="PickUpArea2D" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea2D"]
 shape = SubResource("CircleShape2D_gmlin")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8afob")
+
+[node name="CollisionArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_s3670")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
